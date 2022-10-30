@@ -27,14 +27,26 @@ def menu():
             todos_service.nuevo_todo( nombre, False )
 
         elif opc == 2:
+
             id = int(input("Id del todo a actualizar: "))
+
+            if todos_service.existe_todo( id ):
+                print(f"Todo con id: { id } no encontrado")
+                continue
+
             nombre = input("Nuevo nombre del todo: ")
-            completa = input("¿Ya esta completa?\n s : n ")
+            completa = input("¿Ya está completa?\n s : n ")
 
             todos_service.actualizar_todo( id, nombre, completa == "s" )
 
         elif opc == 3:
+
             id = int(input("Id del todo a borrar: "))
+
+            if todos_service.existe_todo( id ):
+                print(f"Todo con id: { id } no encontrado")
+                continue
+
             todos_service.borrar_todo( id )
 
         else:

@@ -1,9 +1,13 @@
 import random
-
 import sys
+
+from busqueda.busqueda_binaria import busqueda_binaria
+from ordenamiento.quick_sort import quick_sort
+
 sys.path.insert(0,"..")
 from database.TodosFile import TodosFile
 from classes.Todo import Todo
+
 
 
 class TodosService:
@@ -39,4 +43,15 @@ class TodosService:
     
     def borrar_todo(self, id : int) -> None:
         self.repositorio.eliminar_todo( id )
+
+
+    def existe_todo(self, id : int) -> bool:
+
+        todos = self.listar_todos()
+
+        quick_sort(todos, Todo.get_id, 0, len(todos) - 1)
+
+        indice = busqueda_binaria(todos, id, Todo.get_id, 0, len(todos) - 1)
+        
+        return isinstance( indice, int ) # Si el indice es entero, lo encontro
     

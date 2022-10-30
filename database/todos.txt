@@ -1,0 +1,5 @@
+689919141|Ordenar desktop|True
+815262858|Ver peliculas|False
+335205876|Limpiar pc|False
+43950781|Visitar museo|False
+503698710|ordenar mi cama|False
